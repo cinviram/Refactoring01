@@ -58,5 +58,13 @@ public class Cliente {
         direccion = direccionNueva;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     
 }
