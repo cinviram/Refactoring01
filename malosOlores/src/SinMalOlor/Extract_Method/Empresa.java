@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RefactoringExtractMethod;
+package SinMalOlor.Extract_Method;
 
-import conmalolor.Cliente;
-import conmalolor.Employee;
+import SinMalOlor.Extract_Class.Ubicación;
+import SinMalOlor.Extract_SuperClass.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +21,15 @@ public class Empresa {
     public List<Employee> empleados;
 
     public Empresa() {
-        clientes = new ArrayList<Cliente>();
-        empleados = new ArrayList<Employee>();
+        clientes = new ArrayList<>();
+        empleados = new ArrayList<>();
     }
 
     public void MostrarInformacion(Cliente cliente) {
-        validarInformacion(cliente.Nombre, cliente.Apellido, cliente.Cedula);
+        validarInformacion(cliente.getNombre(), cliente.getApellido(), cliente.getCedula());
         System.out.println("Datos del Cliente:");
-        System.out.println("Nombre: " + cliente.Nombre + ", Apellido: " + cliente.Apellido + ", con numero de cedula: " + cliente.Cedula);
-        System.out.println("Direccion: " + cliente.mostrarLocation());
+        System.out.println("Nombre: " + cliente.getNombre() + ", Apellido: " + cliente.getApellido() + ", con numero de cedula: " + cliente.getCedula());
+        System.out.println("Direccion: " + cliente.getUbicacion().mostrarDireccion());
         System.out.println("----------------------");
     }
 
@@ -36,16 +37,16 @@ public class Empresa {
         validarInformacion(emp.getNombre(), emp.getApellido(), emp.getCedula());
         System.out.println("Empleado:");
         System.out.println("Nombre: " + emp.getNombre() + ", Apellido: " + emp.getApellido() + ", con numero de cedula: " + emp.getCedula());
-        System.out.println("Direccion: " + emp.mostrarDireccion());
+        System.out.println("Direccion: " + emp.getUbicacion().mostrarDireccion());
         System.out.println("----------------------");
     }
 
     public void GuardarCliente(String Nombre, String Apellido, String Cedula) {
         validarInformacion(Nombre, Apellido, Cedula);
         Cliente cliente = new Cliente(Nombre, Apellido, Cedula);
-        cliente.setLocation("Ecuador", "Guayaquil", "Guayas", "Alborada 3era etapa");
+        cliente.setUbicacion(new Ubicación("Ecuador", "Guayaquil", "Guayas", "Alborada 3era etapa"));
         this.clientes.add(cliente);
-        System.out.println("Nuevo cliente agregado con éxito. Nombre: " + cliente.Nombre + " Apellido: " + cliente.Apellido);
+        System.out.println("Nuevo cliente agregado con éxito. Nombre: " + cliente.getNombre() + " Apellido: " + cliente.getApellido());
 
     }
 
